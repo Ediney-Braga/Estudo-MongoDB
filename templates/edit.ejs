@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirection</title>
+    <title>Edit</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Edit link</h1>
-    
-    <form action="/edit/<%=body.id%>" method="POST">
-        <input class="field" name="title" placeholder="Title" required value="<%=body.title%>" >
-        <input class="field" name="description" placeholder="Description" value="<%=body.description%>">
-        <input class="field" name="url" placeholder="URL" required value="<%=body.url%>">
-        <button>Edit</button>
-    </form>
 
-    <%if(error){%>
-        <h3><%=error.message%></h3>
-     <%}%>   
+    <div class="container w-50">
+        <h1>Edit link</h1>
+        
+        <form class="d-flex flex-column" action="/edit/<%=body.id%>" method="POST">
+            <input class="mb-2 px-2" name="title" placeholder="Title" required value="<%=body.title %>" >
+            <input class="mb-2 px-2" name="description" placeholder="Description" value="<%=body.description %>">
+            <input class="mb-4 px-2" name="url" placeholder="URL" required value="<%=body.url%>">
+            <button class="btn btn-primary">Edit</button>
+        </form>
+        <%if(error) {%>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error: </strong> <%=error.message%>
+                <button type="button" class="btn-close " data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <%}%>
+    </div>
+
 </body>
 </html>
